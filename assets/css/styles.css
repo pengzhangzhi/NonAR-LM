@@ -259,7 +259,7 @@ p { color: var(--text); }
   padding: 1.8rem 2.4rem; display: grid; place-items: center; min-width: 240px; flex: 1; max-width: 360px; box-shadow: var(--shadow);
 }
 .sponsor img { max-height: 44px; width: auto; object-fit: contain; }
-.sponsor img.logo-mbz { max-height: 60px; }
+.sponsor img.logo-ifm { max-height: 54px; max-width: 100%; }
 .sponsor .sponsor-cap { font-size: .8rem; color: var(--text-muted); margin-top: .9rem; text-align: center; }
 .sponsors-note { text-align: center; color: var(--text-muted); font-size: .9rem; margin-top: 1.2rem; }
 
