@@ -241,7 +241,9 @@ p { color: var(--text); }
 .person .person-name a { color: var(--text); }
 .person .person-name a:hover { color: var(--accent-strong); }
 .person .person-aff { font-size: .85rem; color: var(--text-muted); margin-top: .15rem; line-height: 1.4; min-height: 2.4em; }
-.person .person-role { font-size: .76rem; color: var(--accent-ink); font-weight: 600; margin-top: .3rem; text-transform: uppercase; letter-spacing: .03em; }
+.person .person-contact { font-size: .78rem; line-height: 1.35; margin-top: .4rem; color: var(--text-muted); }
+.person .person-contact a { color: var(--accent); word-break: break-word; }
+.person .person-role { font-size: .72rem; color: var(--accent-ink); font-weight: 700; margin-top: auto; padding-top: .6rem; text-transform: uppercase; letter-spacing: .06em; }
 .person .person-links { display: flex; gap: .6rem; justify-content: center; margin-top: auto; padding-top: .7rem; }
 .person .person-links a { width: 30px; height: 30px; border-radius: 8px; background: var(--surface); border: 1px solid var(--border); display: grid; place-items: center; color: var(--text-muted); }
 .person .person-links a:hover { color: var(--accent-strong); border-color: var(--accent); }
@@ -249,10 +251,6 @@ p { color: var(--text); }
 .subhead { font-family: var(--font-sans); font-size: .8rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-strong); margin: 2.6rem 0 1.6rem; display: flex; align-items: center; justify-content: center; gap: 1rem; }
 .subhead::before, .subhead::after { content:""; flex:1; max-width: 120px; height:1px; background: var(--border); }
 .subhead:first-child { margin-top: 0; }
-
-/* ---------- Panel ---------- */
-.panel-mod { font-size: .92rem; color: var(--text-muted); margin-top: 1rem; }
-.panel-mod b { color: var(--text); font-weight: 600; }
 
 /* ---------- Sponsors ---------- */
 .sponsors { display: flex; flex-wrap: wrap; gap: 1.4rem; align-items: stretch; justify-content: center; }
@@ -332,15 +330,14 @@ p { color: var(--text); }
 .prose { margin-inline: auto; }
 .dates-note, .schedule-note { text-align: center; }
 .schedule { max-width: 640px; margin-inline: auto; }
-.panel-mod { text-align: center; margin-top: 1.5rem; }
-.panel-people { max-width: 560px; margin-inline: auto; }
 
-/* Balanced people rows: speakers 3-up (3,3), organizers 4-up */
+/* Balanced people rows: speakers 3-up (3,3), organizers + panel 4-up */
 .speakers-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 760px; margin-inline: auto; }
 .org-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); max-width: 920px; margin-inline: auto; }
+.panel-people { grid-template-columns: repeat(4, minmax(0, 1fr)); max-width: 740px; margin-inline: auto; }
 @media (max-width: 920px) {
-  .speakers-grid, .org-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 540px; }
+  .speakers-grid, .org-grid, .panel-people { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 540px; }
 }
 @media (max-width: 540px) {
-  .speakers-grid, .org-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: none; gap: 1.4rem .7rem; }
+  .speakers-grid, .org-grid, .panel-people { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: none; gap: 1.4rem .7rem; }
 }
