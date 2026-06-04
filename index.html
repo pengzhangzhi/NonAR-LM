@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Non-Autoregressive Language Models for Fast and Flexible Text Generation — COLM 2026 Workshop</title>
+  <meta name="description" content="A COLM 2026 workshop on non-autoregressive language modeling — diffusion, flow matching, and any-order autoregression. San Francisco, October 9, 2026.">
+  <link rel="canonical" href="https://pengzhangzhi.github.io/NonAR-LM/">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Non-Autoregressive Language Models for Fast and Flexible Text Generation">
+  <meta property="og:description" content="A COLM 2026 workshop on language generation beyond next-token prediction — diffusion, flow matching, and any-order autoregression. San Francisco, October 9, 2026.">
+  <meta property="og:url" content="https://pengzhangzhi.github.io/NonAR-LM/">
+  <meta property="og:image" content="https://pengzhangzhi.github.io/NonAR-LM/assets/img/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Non-Autoregressive Language Models for Fast and Flexible Text Generation — COLM 2026">
+  <meta name="twitter:description" content="Diffusion, flow matching, and any-order autoregression. A COLM 2026 workshop, San Francisco, October 9, 2026.">
+  <meta name="twitter:image" content="https://pengzhangzhi.github.io/NonAR-LM/assets/img/og-image.png">
+  <meta name="theme-color" content="#0f766e">
+
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ===================== Header ===================== -->
+  <header class="site-header" id="top">
+    <div class="container nav">
+      <a class="brand" href="#top"><span class="brand-dot" aria-hidden="true"></span>NonAR-LM</a>
+      <nav aria-label="Primary">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#about">About</a></li>
+          <li><a href="#topics">Topics</a></li>
+          <li><a href="#cfp">Call for Papers</a></li>
+          <li><a href="#schedule">Schedule</a></li>
+          <li><a href="#speakers">Speakers</a></li>
+          <li><a href="#organizers">Organizers</a></li>
+        </ul>
+      </nav>
+      <div class="nav-cta">
+        <a class="btn btn--primary" href="#cfp">Submit</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks"><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ===================== Hero ===================== -->
+    <section class="hero">
+      <div class="container">
+        <span class="eyebrow">COLM 2026 Workshop</span>
+        <h1><span class="nowrap">Non-Autoregressive</span> Language Models for <em>Fast &amp; Flexible</em> Text Generation</h1>
+        <p class="lede">A workshop on language generation beyond next-token prediction — spanning diffusion, flow matching, and any-order autoregression.</p>
+        <div class="hero-meta">
+          <span><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>October 9, 2026</span>
+          <span><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>San Francisco, CA · co-located with COLM 2026</span>
+        </div>
+        <div class="hero-actions">
+          <a class="btn btn--primary" href="#cfp">Call for Papers
+            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn--ghost" href="#schedule">View Schedule</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Key dates ===================== -->
+    <section class="section" id="dates" aria-label="Key dates" style="padding-top:0">
+      <div class="container">
+        <div class="dates">
+          <div class="date-card" data-deadline="2026-06-23">
+            <div class="date-label">Submissions Due</div>
+            <div class="date-value">Jun 23, 2026</div>
+            <div class="date-sub">via OpenReview · AoE</div>
+          </div>
+          <div class="date-card" data-deadline="2026-07-24">
+            <div class="date-label">Notifications</div>
+            <div class="date-value">Jul 24, 2026</div>
+            <div class="date-sub">accept / reject</div>
+          </div>
+          <div class="date-card">
+            <div class="date-label">Camera-ready</div>
+            <div class="date-value">TBA</div>
+            <div class="date-sub">non-archival</div>
+          </div>
+          <div class="date-card" data-deadline="2026-10-09">
+            <div class="date-label">Workshop</div>
+            <div class="date-value">Oct 9, 2026</div>
+            <div class="date-sub">San Francisco</div>
+          </div>
+        </div>
+        <p class="dates-note">Dates are tentative and follow the suggested COLM 2026 workshop timeline.</p>
+      </div>
+    </section>
+
+    <!-- ===================== News ===================== -->
+    <section class="section section--alt" id="news">
+      <div class="container">
+        <div class="section-head"><span class="eyebrow">News</span><h2>Announcements</h2></div>
+        <div class="news">
+          <ul class="news-list">
+            <li><time datetime="2026-06">Jun 2026</time><span>Workshop website is live. Call for papers is open below — submission portal opening soon.</span></li>
+            <li><time datetime="2026-05">May 2026</time><span>NonAR-LM is confirmed as an official workshop at <a href="https://colmweb.org/" target="_blank" rel="noopener">COLM 2026</a> in San Francisco.</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== About ===================== -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">About</span>
+          <h2>Language generation beyond next-token prediction</h2>
+        </div>
+        <div class="prose" style="max-width:72ch">
+          <p>Autoregressive next-token prediction has long been the dominant paradigm for language modeling, thanks to its simplicity, scalability, and strong empirical performance. Yet the left-to-right factorization imposes constraints that limit efficiency, controllability, and global coherence.</p>
+          <p>Recent advances in <strong>non-autoregressive</strong> modeling offer a fundamentally different approach to discrete sequence generation. Instead of committing to a fixed left-to-right order, these models enable parallel decoding, generate tokens in any order, and can revise earlier decisions. They span masked and uniform-state diffusion, discrete flow matching, and any-order autoregression, and are now competitive at scale and increasingly deployed in industry systems. This workshop brings the community together around three core challenges:</p>
+        </div>
+        <div class="cards-3" style="margin-top:2rem">
+          <div class="card">
+            <div class="card-icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+            <h3>Sequential decoding bottleneck</h3>
+            <p>Tokens are generated one at a time, preventing parallelism across the sequence and leaving hardware underutilized.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/></svg></div>
+            <h3>Limited controllability</h3>
+            <p>Conditioning on global constraints or future tokens is indirect, often needing complex prompting, rejection sampling, or constrained decoding.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9M3 12a9 9 0 0 1 9-9M3 12h9V3"/><path d="M12 12 8 8"/></svg></div>
+            <h3>Limited global consistency</h3>
+            <p>Local, token-level decisions can drift into incoherence over long horizons, since the model cannot revise earlier outputs.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Topics ===================== -->
+    <section class="section section--alt" id="topics">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Topics</span>
+          <h2>Call for contributed work</h2>
+          <p>We invite contributions on training and/or inference of non-autoregressive language models — including diffusion, flow matching, and any-order autoregression.</p>
+        </div>
+        <div class="cards-4">
+          <div class="card">
+            <span class="card-num">01</span>
+            <h3>Modeling &amp; Training</h3>
+            <p>New model classes and training objectives — discrete diffusion, uniform-state diffusion, flow-based, and any-order approaches.</p>
+          </div>
+          <div class="card">
+            <span class="card-num">02</span>
+            <h3>Inference &amp; Sampling</h3>
+            <p>Inference-time algorithms: iterative refinement, parallel decoding, controllable and constrained generation, planning and correction.</p>
+          </div>
+          <div class="card">
+            <span class="card-num">03</span>
+            <h3>Evaluation &amp; Efficiency</h3>
+            <p>Evaluation beyond left-to-right likelihood, plus parallel generation, latency-constrained inference, and systems for scaling.</p>
+          </div>
+          <div class="card">
+            <span class="card-num">04</span>
+            <h3>Applications</h3>
+            <p>Applications across language, code, and biological sequences — including comparative studies of when iterative models help.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Call for papers ===================== -->
+    <section class="section" id="cfp">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Call for Papers</span>
+          <h2>Submit your work</h2>
+          <p>Submissions may present new results, works in progress, negative results, empirical evaluations, or forward-looking position papers relevant to the workshop themes.</p>
+        </div>
+        <div class="cfp-grid">
+          <ul class="cfp-facts">
+            <li><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg><span><b>2–4 page extended abstracts</b>, excluding references and an optional appendix.</span></li>
+            <li><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M3 12h18"/></svg><span><b>Non-archival.</b> Submitting does not preclude publishing elsewhere.</span></li>
+            <li><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7S2 12 2 12z"/></svg><span><b>Double-blind review.</b> Each submission receives at least three reviews.</span></li>
+            <li><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg><span><b>Six spotlight (contributed) talks</b> selected from submissions; <b>all accepted work</b> is presented as posters.</span></li>
+            <li><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span>Submissions due <b>June 23, 2026</b>; notifications by <b>July 24, 2026</b> <span style="color:var(--text-muted)">(tentative)</span>.</span></li>
+            <li><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Conflicts of interest handled per COLM policy; conflicted organizers and reviewers are recused.</span></li>
+          </ul>
+          <aside class="cfp-side">
+            <h3>Submission portal</h3>
+            <p class="muted">Submissions are handled through OpenReview.</p>
+            <button class="btn btn--disabled" type="button" disabled>OpenReview — coming soon</button>
+            <p class="soon-note">The submission link will be posted here once the portal opens. Check the <a href="#news">announcements</a> for updates.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Schedule ===================== -->
+    <section class="section section--alt" id="schedule">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Program</span>
+          <h2>Tentative schedule</h2>
+          <p>A full day of 6 invited talks, 6 contributed spotlight talks, 2 poster sessions, and a panel discussion (times in Pacific Time).</p>
+        </div>
+        <div class="schedule">
+          <div class="slot is-keynote"><div class="slot-time">09:00</div><div><div class="slot-title">Opening Remarks</div></div></div>
+          <div class="slot is-keynote"><div class="slot-time">09:10</div><div><div class="slot-title">Invited Talk 1</div><div class="slot-kind">Keynote · 40 min</div></div></div>
+          <div class="slot is-keynote"><div class="slot-time">09:50</div><div><div class="slot-title">Invited Talk 2</div><div class="slot-kind">Keynote · 40 min</div></div></div>
+          <div class="slot is-break"><div class="slot-time">10:30</div><div><div class="slot-title">Coffee &amp; Poster Session 1</div></div></div>
+          <div class="slot is-keynote"><div class="slot-time">11:30</div><div><div class="slot-title">Invited Talk 3</div><div class="slot-kind">Keynote · 40 min</div></div></div>
+          <div class="slot"><div class="slot-time">12:10</div><div><div class="slot-title">Contributed Talks I</div><div class="slot-kind">3 spotlight talks · 10 min each</div></div></div>
+          <div class="slot is-break"><div class="slot-time">12:40</div><div><div class="slot-title">Lunch</div></div></div>
+          <div class="slot is-keynote"><div class="slot-time">13:50</div><div><div class="slot-title">Invited Talk 4</div><div class="slot-kind">Keynote · 40 min</div></div></div>
+          <div class="slot is-keynote"><div class="slot-time">14:30</div><div><div class="slot-title">Invited Talk 5</div><div class="slot-kind">Keynote · 40 min</div></div></div>
+          <div class="slot"><div class="slot-time">15:10</div><div><div class="slot-title">Contributed Talks II</div><div class="slot-kind">3 spotlight talks · 10 min each</div></div></div>
+          <div class="slot is-break"><div class="slot-time">15:40</div><div><div class="slot-title">Coffee &amp; Poster Session 2</div></div></div>
+          <div class="slot is-keynote"><div class="slot-time">16:40</div><div><div class="slot-title">Invited Talk 6</div><div class="slot-kind">Keynote · 40 min</div></div></div>
+          <div class="slot"><div class="slot-time">17:20</div><div><div class="slot-title">Panel Discussion</div><div class="slot-kind">The future of language generation beyond next-token prediction · 60 min</div></div></div>
+          <div class="slot is-keynote"><div class="slot-time">18:20</div><div><div class="slot-title">Closing Remarks</div></div></div>
+        </div>
+        <p class="schedule-note">Schedule is tentative; talk-to-slot assignments will be finalized closer to the event.</p>
+      </div>
+    </section>
+
+    <!-- ===================== Speakers ===================== -->
+    <section class="section" id="speakers">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Invited Speakers</span>
+          <h2>Speakers</h2>
+          <p><span class="badge badge--dot">All invited speakers and panelists have confirmed</span></p>
+        </div>
+        <div class="people-grid">
+          <!-- speaker card -->
+          <figure class="person">
+            <a class="person-link" href="https://aditya-grover.github.io/" target="_blank" rel="noopener"><img class="avatar" src="assets/img/people/aditya-grover.jpg" alt="Aditya Grover" loading="lazy" width="138" height="138"></a>
+            <figcaption>
+              <div class="person-name"><a href="https://aditya-grover.github.io/" target="_blank" rel="noopener">Aditya Grover</a></div>
+              <div class="person-aff">Assistant Professor, UCLA</div>
+              <div class="person-links">
+                <a href="https://aditya-grover.github.io/" target="_blank" rel="noopener" aria-label="Aditya Grover — homepage"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"/></svg></a>
+                <a href="https://scholar.google.com/citations?hl=en&user=oOhnPUgAAAAJ" target="_blank" rel="noopener" aria-label="Aditya Grover — Google Scholar"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3zM5 13.2V17c0 1.7 3.1 3 7 3s7-1.3 7-3v-3.8l-7 3.8-7-3.8z"/></svg></a>
+              </div>
+            </figcaption>
+          </figure>
+          <figure class="person">
+            <a class="person-link" href="https://cs.stanford.edu/~ermon/" target="_blank" rel="noopener"><img class="avatar" src="assets/img/people/stefano-ermon.jpg" alt="Stefano Ermon" loading="lazy" width="138" height="138"></a>
+            <figcaption>
+              <div class="person-name"><a href="https://cs.stanford.edu/~ermon/" target="_blank" rel="noopener">Stefano Ermon</a></div>
+              <div class="person-aff">Associate Professor, Stanford</div>
+              <div class="person-links">
+                <a href="https://cs.stanford.edu/~ermon/" target="_blank" rel="noopener" aria-label="Stefano Ermon — homepage"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"/></svg></a>
+                <a href="https://scholar.google.com/citations?hl=en&user=ogXTOZ4AAAAJ" target="_blank" rel="noopener" aria-label="Stefano Ermon — Google Scholar"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3zM5 13.2V17c0 1.7 3.1 3 7 3s7-1.3 7-3v-3.8l-7 3.8-7-3.8z"/></svg></a>
+              </div>
+            </figcaption>
+          </figure>
+          <figure class="person">
+            <a class="person-link" href="https://research.nvidia.com/person/arash-vahdat" target="_blank" rel="noopener"><img class="avatar" src="assets/img/people/arash-vahdat.jpg" alt="Arash Vahdat" loading="lazy" width="138" height="138"></a>
+            <figcaption>
+              <div class="person-name"><a href="https://research.nvidia.com/person/arash-vahdat" target="_blank" rel="noopener">Arash Vahdat</a></div>
+              <div class="person-aff">Research Director, NVIDIA Research</div>
+              <div class="person-links">
+                <a href="https://research.nvidia.com/person/arash-vahdat" target="_blank" rel="noopener" aria-label="Arash Vahdat — homepage"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"/></svg></a>
+                <a href="https://scholar.google.com/citations?hl=en&user=p9-nlRIAAAAJ" target="_blank" rel="noopener" aria-label="Arash Vahdat — Google Scholar"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3zM5 13.2V17c0 1.7 3.1 3 7 3s7-1.3 7-3v-3.8l-7 3.8-7-3.8z"/></svg></a>
+              </div>
+            </figcaption>
+          </figure>
+          <figure class="person">
+            <a class="person-link" href="https://jiaxins.io/" target="_blank" rel="noopener"><img class="avatar" src="assets/img/people/jiaxin-shi.jpg" alt="Jiaxin Shi" loading="lazy" width="138" height="138"></a>
+            <figcaption>
+              <div class="person-name"><a href="https://jiaxins.io/" target="_blank" rel="noopener">Jiaxin Shi</a></div>
+              <div class="person-aff">Research Scientist, Meta SuperIntelligence Labs</div>
+              <div class="person-links">
+                <a href="https://jiaxins.io/" target="_blank" rel="noopener" aria-label="Jiaxin Shi — homepage"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"/></svg></a>
+                <a href="https://scholar.google.com/citations?hl=en&user=juZXbFoAAAAJ" target="_blank" rel="noopener" aria-label="Jiaxin Shi — Google Scholar"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3zM5 13.2V17c0 1.7 3.1 3 7 3s7-1.3 7-3v-3.8l-7 3.8-7-3.8z"/></svg></a>
+              </div>
+            </figcaption>
+          </figure>
+          <figure class="person">
+            <a class="person-link" href="https://mwang.princeton.edu/" target="_blank" rel="noopener"><img class="avatar" src="assets/img/people/mengdi-wang.jpg" alt="Mengdi Wang" loading="lazy" width="138" height="138"></a>
+            <figcaption>
+              <div class="person-name"><a href="https://mwang.princeton.edu/" target="_blank" rel="noopener">Mengdi Wang</a></div>
+              <div class="person-aff">Professor, Princeton University</div>
+              <div class="person-links">
+                <a href="https://mwang.princeton.edu/" target="_blank" rel="noopener" aria-label="Mengdi Wang — homepage"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"/></svg></a>
+                <a href="https://scholar.google.com/citations?hl=en&user=33yNvIgAAAAJ" target="_blank" rel="noopener" aria-label="Mengdi Wang — Google Scholar"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3zM5 13.2V17c0 1.7 3.1 3 7 3s7-1.3 7-3v-3.8l-7 3.8-7-3.8z"/></svg></a>
+              </div>
+            </figcaption>
+          </figure>
+          <figure class="person">
+            <a class="person-link" href="https://summmeer.github.io/" target="_blank" rel="noopener"><img class="avatar" src="assets/img/people/shansan-gong.jpg" alt="Shansan Gong" loading="lazy" width="138" height="138"></a>
+            <figcaption>
+              <div class="person-name"><a href="https://summmeer.github.io/" target="_blank" rel="noopener">Shansan Gong</a></div>
+              <div class="person-aff">Ph.D. Candidate, University of Hong Kong</div>
+              <div class="person-links">
+                <a href="https://summmeer.github.io/" target="_blank" rel="noopener" aria-label="Shansan Gong — homepage"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"/></svg></a>
+                <a href="https://scholar.google.com/citations?hl=en&user=F86VNoMAAAAJ" target="_blank" rel="noopener" aria-label="Shansan Gong — Google Scholar"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3zM5 13.2V17c0 1.7 3.1 3 7 3s7-1.3 7-3v-3.8l-7 3.8-7-3.8z"/></svg></a>
+              </div>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Panel ===================== -->
+    <section class="section section--alt" id="panel">
+      <div class="container">
+        <div class="panel-wrap">
+          <div>
+            <span class="eyebrow">Panel</span>
+            <h2>The future of language generation</h2>
+            <div class="prose" style="margin-top:.8rem">
+              <p>Our panel examines when iterative discrete generation offers qualitatively different capabilities from standard autoregressive modeling, and what technical barriers remain in scaling, controllability, inference-time computation, and evaluation — bringing together complementary viewpoints from academia and industry.</p>
+            </div>
+            <p class="panel-mod">Moderated by <b>Fred Peng</b> (Duke University).</p>
+          </div>
+          <div class="people-grid is-compact">
+            <figure class="person">
+              <a class="person-link" href="https://aditya-grover.github.io/" target="_blank" rel="noopener"><img class="avatar" src="assets/img/people/aditya-grover.jpg" alt="Aditya Grover" loading="lazy" width="138" height="138"></a>
+              <figcaption>
+                <div class="person-name"><a href="https://aditya-grover.github.io/" target="_blank" rel="noopener">Aditya Grover</a></div>
+                <div class="person-aff">UCLA</div>
+              </figcaption>
+            </figure>
+            <figure class="person">
+              <a class="person-link" href="https://s-sahoo.com/" target="_blank" rel="noopener"><img class="avatar" src="assets/img/people/subham-sahoo.jpg" alt="Subham Sekhar Sahoo" loading="lazy" width="138" height="138"></a>
+              <figcaption>
+                <div class="person-name"><a href="https://s-sahoo.com/" target="_blank" rel="noopener">Subham Sekhar Sahoo</a></div>
+                <div class="person-aff">MBZUAI IFM</div>
+              </figcaption>
+            </figure>
+            <figure class="person">
+              <a class="person-link" href="https://louaaron.github.io/" target="_blank" rel="noopener"><img class="avatar" src="assets/img/people/aaron-lou.jpg" alt="Aaron Lou" loading="lazy" width="138" height="138"></a>
+              <figcaption>
+                <div class="person-name"><a href="https://louaaron.github.io/" target="_blank" rel="noopener">Aaron Lou</a></div>
+                <div class="person-aff">OpenAI</div>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Organizers ===================== -->
+    <section class="section" id="organizers">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Organizers</span>
+          <h2>Organizing committee</h2>
+          <p>Designated contacts: <a href="mailto:zhangzhi.peng@duke.edu">Fred Peng</a> &amp; <a href="mailto:marriola@cs.cornell.edu">Marianne Arriola</a>.</p>
+        </div>
+
+        <h3 class="subhead">Senior Organizers</h3>
+        <div class="people-grid">
+          <figure class="person">
+            <a class="person-link" href="https://alextong.net/" target="_blank" rel="noopener"><img class="avatar" src="assets/img/people/alexander-tong.jpg" alt="Alexander Tong" loading="lazy" width="138" height="138"></a>
+            <figcaption>
+              <div class="person-name"><a href="https://alextong.net/" target="_blank" rel="noopener">Alexander Tong</a></div>
+              <div class="person-aff">Principal Investigator, Aithyra</div>
+              <div class="person-links">
+                <a href="https://alextong.net/" target="_blank" rel="noopener" aria-label="Alexander Tong — homepage"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"/></svg></a>
+                <a href="https://scholar.google.com/citations?hl=en&user=CS80pt4AAAAJ" target="_blank" rel="noopener" aria-label="Alexander Tong — Google Scholar"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3zM5 13.2V17c0 1.7 3.1 3 7 3s7-1.3 7-3v-3.8l-7 3.8-7-3.8z"/></svg></a>
+              </div>
+            </figcaption>
+          </figure>
+          <figure class="person">
+            <a class="person-link" href="https://www.stats.ox.ac.uk/~doucet/" target="_blank" rel="noopener"><img class="avatar" src="assets/img/people/arnaud-doucet.jpg" alt="Arnaud Doucet" loading="lazy" width="138" height="138"></a>
+            <figcaption>
+              <div class="person-name"><a href="https://www.stats.ox.ac.uk/~doucet/" target="_blank" rel="noopener">Arnaud Doucet</a></div>
+              <div class="person-aff">Senior Staff Research Scientist, Google DeepMind; Visiting Professor, Oxford</div>
+              <div class="person-links">
+                <a href="https://www.stats.ox.ac.uk/~doucet/" target="_blank" rel="noopener" aria-label="Arnaud Doucet — homepage"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"/></svg></a>
+                <a href="https://scholar.google.com/citations?user=W4SZGV8AAAAJ&hl=en" target="_blank" rel="noopener" aria-label="Arnaud Doucet — Google Scholar"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3zM5 13.2V17c0 1.7 3.1 3 7 3s7-1.3 7-3v-3.8l-7 3.8-7-3.8z"/></svg></a>
+              </div>
+            </figcaption>
+          </figure>
+          <figure class="person">
+            <a class="person-link" href="https://bodono.github.io/" target="_blank" rel="noopener"><img class="avatar" src="assets/img/people/brendan-odonoghue.jpg" alt="Brendan O&rsquo;Donoghue" loading="lazy" width="138" height="138"></a>
+            <figcaption>
+              <div class="person-name"><a href="https://bodono.github.io/" target="_blank" rel="noopener">Brendan O&rsquo;Donoghue</a></div>
+              <div class="person-aff">Director of Research, Google DeepMind</div>
+              <div class="person-links">
+                <a href="https://bodono.github.io/" target="_blank" rel="noopener" aria-label="Brendan O'Donoghue — homepage"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"/></svg></a>
+                <a href="https://scholar.google.com/citations?hl=en&user=0Pzjj-cAAAAJ" target="_blank" rel="noopener" aria-label="Brendan O'Donoghue — Google Scholar"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3zM5 13.2V17c0 1.7 3.1 3 7 3s7-1.3 7-3v-3.8l-7 3.8-7-3.8z"/></svg></a>
+              </div>
+            </figcaption>
+          </figure>
+        </div>
+
+        <h3 class="subhead">Junior Organizers</h3>
+        <div class="people-grid">
+          <figure class="person">
+            <a class="person-link" href="https://pengzhangzhi.github.io/home/" target="_blank" rel="noopener"><img class="avatar" src="assets/img/people/fred-peng.jpg" alt="Fred Peng" loading="lazy" width="138" height="138"></a>
+            <figcaption>
+              <div class="person-name"><a href="https://pengzhangzhi.github.io/home/" target="_blank" rel="noopener">Fred Peng</a></div>
+              <div class="person-aff">Ph.D. Student, Duke University</div>
+              <div class="person-role">Designated contact</div>
+              <div class="person-links">
+                <a href="https://pengzhangzhi.github.io/home/" target="_blank" rel="noopener" aria-label="Fred Peng — homepage"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"/></svg></a>
+                <a href="https://scholar.google.co.uk/citations?hl=en&user=bZwJ9oUAAAAJ" target="_blank" rel="noopener" aria-label="Fred Peng — Google Scholar"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3zM5 13.2V17c0 1.7 3.1 3 7 3s7-1.3 7-3v-3.8l-7 3.8-7-3.8z"/></svg></a>
+              </div>
+            </figcaption>
+          </figure>
+          <figure class="person">
+            <a class="person-link" href="https://m-arriola.com/" target="_blank" rel="noopener"><img class="avatar" src="assets/img/people/marianne-arriola.jpg" alt="Marianne Arriola" loading="lazy" width="138" height="138"></a>
+            <figcaption>
+              <div class="person-name"><a href="https://m-arriola.com/" target="_blank" rel="noopener">Marianne Arriola</a></div>
+              <div class="person-aff">Ph.D. Candidate, Cornell University</div>
+              <div class="person-role">Designated contact</div>
+              <div class="person-links">
+                <a href="https://m-arriola.com/" target="_blank" rel="noopener" aria-label="Marianne Arriola — homepage"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"/></svg></a>
+                <a href="https://scholar.google.com/citations?user=gSTuQicAAAAJ&hl=en" target="_blank" rel="noopener" aria-label="Marianne Arriola — Google Scholar"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3zM5 13.2V17c0 1.7 3.1 3 7 3s7-1.3 7-3v-3.8l-7 3.8-7-3.8z"/></svg></a>
+              </div>
+            </figcaption>
+          </figure>
+          <figure class="person">
+            <a class="person-link" href="https://jaeyeonkim01.github.io/" target="_blank" rel="noopener"><img class="avatar" src="assets/img/people/jaeyeon-kim.jpg" alt="Jaeyeon Kim" loading="lazy" width="138" height="138"></a>
+            <figcaption>
+              <div class="person-name"><a href="https://jaeyeonkim01.github.io/" target="_blank" rel="noopener">Jaeyeon Kim</a></div>
+              <div class="person-aff">Ph.D. Student, Harvard University</div>
+              <div class="person-links">
+                <a href="https://jaeyeonkim01.github.io/" target="_blank" rel="noopener" aria-label="Jaeyeon Kim — homepage"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"/></svg></a>
+                <a href="https://scholar.google.com/citations?user=1bXthLsAAAAJ&hl=en" target="_blank" rel="noopener" aria-label="Jaeyeon Kim — Google Scholar"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3zM5 13.2V17c0 1.7 3.1 3 7 3s7-1.3 7-3v-3.8l-7 3.8-7-3.8z"/></svg></a>
+              </div>
+            </figcaption>
+          </figure>
+          <figure class="person">
+            <a class="person-link" href="https://siyan-zhao.github.io/" target="_blank" rel="noopener"><img class="avatar" src="assets/img/people/siyan-zhao.jpg" alt="Siyan Zhao" loading="lazy" width="138" height="138"></a>
+            <figcaption>
+              <div class="person-name"><a href="https://siyan-zhao.github.io/" target="_blank" rel="noopener">Siyan Zhao</a></div>
+              <div class="person-aff">Ph.D. Candidate, UCLA</div>
+              <div class="person-links">
+                <a href="https://siyan-zhao.github.io/" target="_blank" rel="noopener" aria-label="Siyan Zhao — homepage"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"/></svg></a>
+                <a href="https://scholar.google.com/citations?user=Q7c4FaYAAAAJ" target="_blank" rel="noopener" aria-label="Siyan Zhao — Google Scholar"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3zM5 13.2V17c0 1.7 3.1 3 7 3s7-1.3 7-3v-3.8l-7 3.8-7-3.8z"/></svg></a>
+              </div>
+            </figcaption>
+          </figure>
+          <figure class="person">
+            <a class="person-link" href="https://yuxuansong.com/" target="_blank" rel="noopener"><img class="avatar" src="assets/img/people/yuxuan-song.jpg" alt="Yuxuan Song" loading="lazy" width="138" height="138"></a>
+            <figcaption>
+              <div class="person-name"><a href="https://yuxuansong.com/" target="_blank" rel="noopener">Yuxuan Song</a></div>
+              <div class="person-aff">Research Scientist, ByteDance Seed</div>
+              <div class="person-links">
+                <a href="https://yuxuansong.com/" target="_blank" rel="noopener" aria-label="Yuxuan Song — homepage"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"/></svg></a>
+                <a href="https://scholar.google.com/citations?user=xlnZ1OIAAAAJ&hl=en" target="_blank" rel="noopener" aria-label="Yuxuan Song — Google Scholar"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3zM5 13.2V17c0 1.7 3.1 3 7 3s7-1.3 7-3v-3.8l-7 3.8-7-3.8z"/></svg></a>
+              </div>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Sponsors ===================== -->
+    <section class="section section--alt" id="sponsors">
+      <div class="container">
+        <div class="section-head" style="text-align:center; margin-inline:auto">
+          <span class="eyebrow">Sponsors</span>
+          <h2>Expected sponsors</h2>
+        </div>
+        <div class="sponsors">
+          <div class="sponsor">
+            <img src="assets/img/logos/bytedance.svg" alt="ByteDance">
+          </div>
+          <div class="sponsor">
+            <img src="assets/img/logos/mbzuai.png" alt="MBZUAI — Mohamed bin Zayed University of Artificial Intelligence">
+          </div>
+        </div>
+        <p class="sponsors-note">Sponsorship is anticipated and pending confirmation. Support will prioritize travel grants for junior and underrepresented researchers.</p>
+      </div>
+    </section>
+
+    <!-- ===================== Diversity & travel ===================== -->
+    <section class="section" id="inclusion">
+      <div class="container">
+        <div class="callout">
+          <h2>Inclusion &amp; travel support</h2>
+          <p>A key priority is to reflect the diverse viewpoints of the whole community. Our speakers, panelists, and organizers span career stages, institution types, and geographies across North America, Europe, the Middle East, and Asia, bridging academia and industry.</p>
+          <p>We support broad participation through an open, non-archival call, poster presentations for all accepted papers, and spotlight talks for selected submissions. Subject to sponsorship, we will offer travel support prioritizing junior researchers, researchers from underrepresented groups, and participants who would otherwise face barriers to attending.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== Footer ===================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand"><span class="brand-dot" aria-hidden="true"></span>NonAR-LM</div>
+          <p>Non-Autoregressive Language Models for Fast and Flexible Text Generation — a workshop at COLM 2026, San Francisco, October 9, 2026.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Workshop</h4>
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#cfp">Call for Papers</a></li>
+            <li><a href="#schedule">Schedule</a></li>
+            <li><a href="#speakers">Speakers</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:zhangzhi.peng@duke.edu">Fred Peng</a></li>
+            <li><a href="mailto:marriola@cs.cornell.edu">Marianne Arriola</a></li>
+            <li><a href="https://colmweb.org/" target="_blank" rel="noopener">COLM 2026</a></li>
+            <li><a href="https://github.com/pengzhangzhi/NonAR-LM" target="_blank" rel="noopener">GitHub</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 NonAR-LM Workshop Organizers.</span>
+        <span>Co-located with the Conference on Language Modeling (COLM) 2026.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
