@@ -33,7 +33,7 @@ python3 -m http.server 8000
 
 All content lives in `index.html`, organized into clearly commented sections
 (`Hero`, `Key dates`, `News`, `About`, `Topics`, `Call for Papers`, `Schedule`,
-`Speakers`, `Panel`, `Organizers`, `Sponsors`, `Inclusion`, `Footer`).
+`Speakers`, `Panel`, `Organizers`, `Inclusion`, `Footer`).
 
 **Add a news item** — add an `<li>` to the `.news-list` in the *News* section:
 
