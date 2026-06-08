@@ -32,8 +32,9 @@ python3 -m http.server 8000
 ## Editing content
 
 All content lives in `index.html`, organized into clearly commented sections
-(`Hero`, `Key dates`, `News`, `About`, `Topics`, `Call for Papers`, `Schedule`,
-`Speakers`, `Panel`, `Organizers`, `Inclusion`, `Footer`).
+(`Hero`, `Key dates`, `News`, `About`, `Topics`, `Call for Papers`,
+`Call for reviewers`, `Schedule`, `Speakers` (incl. *Confirmed Talks*), `Panel`,
+`Organizers`, `Inclusion`, `Footer`).
 
 **Add a news item** — add an `<li>` to the `.news-list` in the *News* section:
 
@@ -45,17 +46,14 @@ All content lives in `index.html`, organized into clearly commented sections
 and update the photo, name, link, and affiliation. Add the headshot to
 `assets/img/people/` (square crop, ~480px, named `first-last.jpg`).
 
-**Add the OpenReview link** — in the *Call for Papers* section, replace the disabled button:
+**Submission portal** — the OpenReview portal is open and linked from the *Call for Papers*
+card via the `Submit on OpenReview` button (`href="https://openreview.net/group?id=colmweb.org/COLM/2026/Workshop/NonAR-LM"`).
+Update that anchor if the venue URL ever changes.
 
-```html
-<a class="btn btn--disabled" aria-disabled="true" href="#cfp">OpenReview — coming soon</a>
-```
-
-with the live link:
-
-```html
-<a class="btn btn--primary" href="https://openreview.net/group?id=…" target="_blank" rel="noopener">Submit on OpenReview</a>
-```
+**Add a confirmed talk** — in the *Speakers* section, copy an `<li class="callout talk-card">…</li>`
+block inside `.talk-list` and update the speaker name/link, affiliation, and talk title. If the
+abstract isn't ready yet, omit the `<details class="talk-abstract">…</details>` element — the card
+still renders cleanly with the badge, name, and title.
 
 **Key dates** — edit the `.date-card` blocks under *Key dates*. The `data-deadline="YYYY-MM-DD"`
 attribute lets the page automatically grey out past dates and flag the next upcoming one.
