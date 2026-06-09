@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NonAR-LM Workshop Social Banner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:opsz,ital,wght@8..60,0,500;8..60,0,600;8..60,0,700;8..60,1,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fbfaf7;
+      --bg-subtle: #f3f0e9;
+      --surface: #ffffff;
+      --text: #1c1b1a;
+      --text-muted: #5a554c;
+      --border: #e7e3da;
+      --accent: #0f766e;
+      --accent-strong: #115e59;
+      --accent-soft: #e6f1ef;
+      --accent-ink: #0b4f49;
+      --danger: #b45309;
+      --font-serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+      --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      background: #d9d4ca;
+      color: var(--text);
+      font-family: var(--font-sans);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    body {
+      display: grid;
+      place-items: center;
+    }
+
+    .banner {
+      position: relative;
+      width: 1200px;
+      height: 675px;
+      overflow: hidden;
+      background:
+        radial-gradient(520px 360px at 106% -8%, rgba(15, 118, 110, .10), transparent 70%),
+        radial-gradient(420px 300px at -9% 109%, rgba(15, 118, 110, .07), transparent 66%),
+        var(--bg);
+      isolation: isolate;
+    }
+
+    body[data-size="square"] .banner {
+      width: 1080px;
+      height: 1080px;
+    }
+
+    .banner::before {
+      content: "";
+      position: absolute;
+      inset: 24px;
+      border: 1px solid rgba(231, 227, 218, .82);
+      border-radius: 22px;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .content {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      padding: 58px 78px 46px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      color: var(--accent-strong);
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 13px;
+      color: var(--text);
+      font-family: var(--font-serif);
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+
+    .brand::before {
+      content: "";
+      width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 7px var(--accent-soft);
+    }
+
+    .motif {
+      position: absolute;
+      top: 112px;
+      right: 70px;
+      display: grid;
+      grid-template-columns: repeat(8, 28px);
+      grid-auto-rows: 28px;
+      gap: 13px;
+      opacity: .78;
+    }
+
+    .motif span {
+      border-radius: 8px;
+      border: 2px solid rgba(15, 118, 110, .22);
+      background: rgba(230, 241, 239, .56);
+    }
+
+    .motif span:nth-child(n+4) {
+      background: rgba(15, 118, 110, .16);
+      border-color: rgba(15, 118, 110, .32);
+    }
+
+    .motif span:nth-child(n+7) {
+      background: var(--accent);
+      border-color: var(--accent);
+      opacity: .9;
+    }
+
+    .main {
+      position: relative;
+      margin-top: 48px;
+      max-width: 980px;
+      z-index: 1;
+    }
+
+    .headline {
+      margin: 0;
+      max-width: 950px;
+      font-family: var(--font-serif);
+      font-size: 60px;
+      font-weight: 600;
+      line-height: 1.08;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+
+    .headline em {
+      color: var(--accent);
+      font-style: italic;
+      white-space: nowrap;
+    }
+
+    .subline {
+      margin: 22px 0 0;
+      max-width: 830px;
+      color: var(--text-muted);
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 1.42;
+    }
+
+    .meta {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 28px;
+      font-size: 18px;
+      font-weight: 650;
+      color: var(--accent-ink);
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 42px;
+      padding: 9px 16px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      border: 1px solid #cfe4e0;
+      white-space: nowrap;
+    }
+
+    .chip.deadline {
+      background: #fff7ed;
+      border-color: #fed7aa;
+      color: var(--danger);
+      font-weight: 800;
+    }
+
+    .divider {
+      height: 1px;
+      width: 100%;
+      margin: 20px 0 0;
+      background: var(--border);
+    }
+
+    .speaker-panel {
+      position: absolute;
+      left: 78px;
+      right: 78px;
+      bottom: 64px;
+      height: 148px;
+      margin: 0;
+      padding: 11px 24px 10px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: rgba(243, 240, 233, .72);
+    }
+
+    .speaker-row {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 16px;
+    }
+
+    .speaker {
+      min-width: 0;
+      text-align: center;
+    }
+
+    .avatar {
+      width: 70px;
+      height: 70px;
+      margin: 0 auto 7px;
+      border-radius: 999px;
+      object-fit: cover;
+      border: 3px solid var(--bg);
+      box-shadow: 0 0 0 2px var(--accent), 0 8px 18px rgba(28, 27, 26, .11);
+      background: var(--bg-subtle);
+    }
+
+    .speaker-name {
+      font-family: var(--font-serif);
+      font-size: 17.5px;
+      font-weight: 650;
+      line-height: 1.05;
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    .speaker-affiliation {
+      margin-top: 3px;
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.12;
+      text-wrap: balance;
+    }
+
+    .footer {
+      position: absolute;
+      left: 78px;
+      right: 78px;
+      bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--accent-ink);
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .footer .topics {
+      color: var(--text-muted);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    body[data-content="deadline"] .main {
+      max-width: 800px;
+    }
+
+    body[data-content="deadline"] .headline {
+      max-width: 720px;
+      font-size: 56px;
+    }
+
+    .deadline-focus {
+      display: none;
+    }
+
+    body[data-content="deadline"] .deadline-focus {
+      position: absolute;
+      top: 150px;
+      right: 78px;
+      display: flex;
+      flex-direction: column;
+      width: 330px;
+      min-height: 250px;
+      padding: 28px;
+      border: 1px solid #fed7aa;
+      border-radius: 14px;
+      background: #fff7ed;
+      box-shadow: 0 14px 34px rgba(180, 83, 9, .12);
+      z-index: 2;
+    }
+
+    .deadline-focus .label {
+      color: var(--danger);
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .deadline-focus .date {
+      margin-top: 16px;
+      color: var(--text);
+      font-family: var(--font-serif);
+      font-size: 55px;
+      font-weight: 700;
+      line-height: .95;
+    }
+
+    .deadline-focus .note {
+      margin-top: auto;
+      color: var(--text-muted);
+      font-size: 17px;
+      font-weight: 600;
+      line-height: 1.35;
+    }
+
+    body[data-content="deadline"] .meta .deadline {
+      display: none;
+    }
+
+    body[data-content="deadline"] .speaker-panel {
+      right: auto;
+      width: 720px;
+    }
+
+    body[data-content="deadline"] .speaker-row {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    body[data-content="deadline"] .speaker:nth-child(n+5) {
+      display: none;
+    }
+
+    body[data-size="square"] .content {
+      padding: 62px 74px 56px;
+    }
+
+    body[data-size="square"] .topbar {
+      font-size: 16px;
+    }
+
+    body[data-size="square"] .brand {
+      font-size: 27px;
+    }
+
+    body[data-size="square"] .motif {
+      top: 132px;
+      right: 74px;
+      grid-template-columns: repeat(4, 30px);
+      opacity: .7;
+    }
+
+    body[data-size="square"] .main {
+      margin-top: 68px;
+      max-width: 890px;
+    }
+
+    body[data-size="square"] .headline {
+      max-width: 890px;
+      font-size: 64px;
+      line-height: 1.08;
+    }
+
+    body[data-size="square"] .subline {
+      max-width: 760px;
+      margin-top: 25px;
+      font-size: 25px;
+    }
+
+    body[data-size="square"] .meta {
+      margin-top: 34px;
+      font-size: 22px;
+      gap: 18px;
+    }
+
+    body[data-size="square"] .chip {
+      min-height: 52px;
+      padding: 12px 19px;
+    }
+
+    body[data-size="square"] .divider {
+      margin-top: 52px;
+    }
+
+    body[data-size="square"] .speaker-panel {
+      position: relative;
+      left: auto;
+      right: auto;
+      bottom: auto;
+      height: auto;
+      margin-top: 28px;
+      padding: 34px 38px 31px;
+    }
+
+    body[data-size="square"] .speaker-row {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 34px 28px;
+    }
+
+    body[data-size="square"] .avatar {
+      width: 116px;
+      height: 116px;
+      margin-bottom: 13px;
+      border-width: 4px;
+      box-shadow: 0 0 0 3px var(--accent), 0 10px 22px rgba(28, 27, 26, .13);
+    }
+
+    body[data-size="square"] .speaker-name {
+      font-size: 24px;
+    }
+
+    body[data-size="square"] .speaker-affiliation {
+      margin-top: 6px;
+      font-size: 16px;
+      line-height: 1.25;
+    }
+
+    body[data-size="square"] .footer {
+      left: 74px;
+      right: 74px;
+      bottom: 34px;
+      font-size: 22px;
+    }
+
+    body[data-size="square"] .footer .topics {
+      display: none;
+    }
+  </style>
+</head>
+<body data-size="wide" data-content="lineup">
+  <main class="banner" aria-label="NonAR-LM COLM 2026 workshop social banner">
+    <div class="content">
+      <header class="topbar">
+        <div class="brand">NonAR-LM</div>
+        <div>COLM 2026 Workshop</div>
+      </header>
+
+      <div class="motif" aria-hidden="true">
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+      </div>
+
+      <section class="main">
+        <h1 class="headline">Non-Autoregressive Language Models for <em>Fast &amp; Flexible</em> Text Generation</h1>
+        <p class="subline">Language generation beyond next-token prediction: diffusion, flow matching, and any-order autoregression.</p>
+        <div class="meta">
+          <div class="chip">San Francisco · Oct 9, 2026</div>
+          <div class="chip deadline">Papers due June 23</div>
+        </div>
+      </section>
+
+      <aside class="deadline-focus" aria-label="Submission deadline">
+        <div class="label">Papers due</div>
+        <div class="date">June 23</div>
+        <div class="note">Non-archival workshop submissions via OpenReview.</div>
+      </aside>
+
+      <div class="divider"></div>
+
+      <section class="speaker-panel" aria-label="Invited speakers">
+        <div class="speaker-row">
+          <article class="speaker">
+            <img class="avatar" src="../img/people/stefano-ermon.jpg" alt="">
+            <div class="speaker-name">Stefano Ermon</div>
+            <div class="speaker-affiliation">Stanford</div>
+          </article>
+          <article class="speaker">
+            <img class="avatar" src="../img/people/shansan-gong.jpg" alt="">
+            <div class="speaker-name">Shansan Gong</div>
+            <div class="speaker-affiliation">University of Hong Kong</div>
+          </article>
+          <article class="speaker">
+            <img class="avatar" src="../img/people/aditya-grover.jpg" alt="">
+            <div class="speaker-name">Aditya Grover</div>
+            <div class="speaker-affiliation">UCLA</div>
+          </article>
+          <article class="speaker">
+            <img class="avatar" src="../img/people/jiaxin-shi.jpg" alt="">
+            <div class="speaker-name">Jiaxin Shi</div>
+            <div class="speaker-affiliation">Meta SuperIntelligence Labs</div>
+          </article>
+          <article class="speaker">
+            <img class="avatar" src="../img/people/arash-vahdat.jpg" alt="">
+            <div class="speaker-name">Arash Vahdat</div>
+            <div class="speaker-affiliation">NVIDIA Research</div>
+          </article>
+          <article class="speaker">
+            <img class="avatar" src="../img/people/mengdi-wang.jpg" alt="">
+            <div class="speaker-name">Mengdi Wang</div>
+            <div class="speaker-affiliation">Princeton University</div>
+          </article>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div>pengzhangzhi.github.io/NonAR-LM</div>
+        <div class="topics">Diffusion · Flow Matching · Any-Order Generation</div>
+      </footer>
+    </div>
+  </main>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    document.body.dataset.size = params.get("size") === "square" ? "square" : "wide";
+    document.body.dataset.content = params.get("content") === "deadline" ? "deadline" : "lineup";
+  </script>
+</body>
+</html>
