@@ -33,8 +33,8 @@ python3 -m http.server 8000
 
 All content lives in `index.html`, organized into clearly commented sections
 (`Hero`, `Key dates`, `News`, `About`, `Topics`, `Call for Papers`,
-`Call for reviewers`, `Schedule`, `Speakers` (incl. *Confirmed Talks*), `Panel`,
-`Organizers`, `Inclusion`, `Footer`).
+`Call for reviewers`, `Schedule`, `Speakers`, `Panel`, `Organizers`, `Inclusion`,
+`Footer`).
 
 **Add a news item** — add an `<li>` to the `.news-list` in the *News* section:
 
@@ -50,10 +50,11 @@ and update the photo, name, link, and affiliation. Add the headshot to
 card via the `Submit on OpenReview` button (`href="https://openreview.net/group?id=colmweb.org/COLM/2026/Workshop/NonAR-LM"`).
 Update that anchor if the venue URL ever changes.
 
-**Add a confirmed talk** — in the *Speakers* section, copy an `<li class="callout talk-card">…</li>`
-block inside `.talk-list` and update the speaker name/link, affiliation, and talk title. If the
-abstract isn't ready yet, omit the `<details class="talk-abstract">…</details>` element — the card
-still renders cleanly with the badge, name, and title.
+**Add a confirmed talk** — inside that speaker's `<figcaption>` in the *Speakers* section
+(right after the `.person-links` block), add a `<details class="person-talk">` whose `<summary>`
+is the "Invited talk" pill + chevron, followed by a `.person-talk-body` holding
+`.person-talk-title` and `.person-talk-abstract`. It expands in place on click, so speakers
+without a confirmed talk keep a clean card and the grid stays aligned.
 
 **Key dates** — edit the `.date-card` blocks under *Key dates*. The `data-deadline="YYYY-MM-DD"`
 attribute lets the page automatically grey out past dates and flag the next upcoming one.
