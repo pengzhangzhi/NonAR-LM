@@ -352,27 +352,3 @@ p { color: var(--text); }
 .cfp-contacts li { display: flex; gap: .6rem; align-items: flex-start; font-size: .86rem; color: var(--text-muted); }
 .cfp-contacts svg { width: 17px; height: 17px; color: var(--accent); flex: none; margin-top: 2px; }
 .cfp-contacts a { word-break: break-word; }
-
-/* ---------- Confirmed talk on a speaker card (native <details>, no JS) ----------
-   Top-align speaker cards so an expanded talk grows only its own card, not the
-   whole row; collapsed, every card stays uniform. */
-.speakers-grid { align-items: start; }
-.speakers-grid .person { height: auto; }
-.person-talk { margin-top: .7rem; }
-.person-talk summary {
-  display: inline-flex; align-items: center; gap: .35rem;
-  list-style: none; cursor: pointer;
-  font-family: var(--font-sans); font-size: .68rem; font-weight: 700;
-  letter-spacing: .06em; text-transform: uppercase; color: var(--accent-strong);
-  padding: .26rem .7rem; border: 1px solid var(--border); border-radius: 999px;
-  background: var(--surface);
-  transition: border-color .16s ease, color .16s ease, background .16s ease;
-}
-.person-talk summary::-webkit-details-marker { display: none; }
-.person-talk summary:hover { border-color: var(--accent); color: var(--accent-ink); background: var(--accent-soft); }
-.person-talk[open] summary { border-color: var(--accent); background: var(--accent-soft); color: var(--accent-ink); }
-.talk-chevron { width: 13px; height: 13px; color: var(--accent); flex: none; transition: transform .18s ease; }
-.person-talk[open] .talk-chevron { transform: rotate(180deg); }
-.person-talk-body { text-align: left; margin-top: .8rem; padding-top: .85rem; border-top: 1px solid var(--border); }
-.person-talk-title { font-family: var(--font-serif); font-weight: 600; font-size: .98rem; line-height: 1.3; color: var(--text); text-wrap: balance; }
-.person-talk-abstract { color: var(--text-muted); font-size: .85rem; line-height: 1.55; margin-top: .55rem; }
