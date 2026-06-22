@@ -20,6 +20,8 @@
       --accent-soft: #e6f1ef;
       --accent-ink: #0b4f49;
       --danger: #b45309;
+      --danger-soft: #fff7ed;
+      --danger-border: #fed7aa;
       --font-serif: "Source Serif 4", Georgia, "Times New Roman", serif;
       --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
@@ -33,7 +35,7 @@
       width: 100%;
       height: 100%;
       margin: 0;
-      background: #d9d4ca;
+      background: #ddd8cf;
       color: var(--text);
       font-family: var(--font-sans);
       -webkit-font-smoothing: antialiased;
@@ -51,8 +53,8 @@
       height: 675px;
       overflow: hidden;
       background:
-        radial-gradient(520px 360px at 106% -8%, rgba(15, 118, 110, .10), transparent 70%),
-        radial-gradient(420px 300px at -9% 109%, rgba(15, 118, 110, .07), transparent 66%),
+        radial-gradient(580px 360px at 104% -10%, rgba(15, 118, 110, .10), transparent 72%),
+        radial-gradient(460px 330px at -12% 116%, rgba(15, 118, 110, .07), transparent 68%),
         var(--bg);
       isolation: isolate;
     }
@@ -66,18 +68,17 @@
       content: "";
       position: absolute;
       inset: 24px;
-      border: 1px solid rgba(231, 227, 218, .82);
-      border-radius: 22px;
+      border: 1px solid rgba(231, 227, 218, .92);
+      border-radius: 24px;
       pointer-events: none;
-      z-index: -1;
     }
 
     .content {
       position: relative;
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-rows: auto 1fr auto auto;
       height: 100%;
-      padding: 58px 78px 46px;
+      padding: 58px 72px 36px;
     }
 
     .topbar {
@@ -85,10 +86,11 @@
       align-items: center;
       justify-content: space-between;
       gap: 28px;
+      min-height: 36px;
       color: var(--accent-strong);
       font-size: 17px;
       font-weight: 800;
-      letter-spacing: .08em;
+      letter-spacing: 0;
       text-transform: uppercase;
     }
 
@@ -102,6 +104,7 @@
       font-weight: 700;
       letter-spacing: 0;
       text-transform: none;
+      white-space: nowrap;
     }
 
     .brand::before {
@@ -111,52 +114,53 @@
       border-radius: 999px;
       background: var(--accent);
       box-shadow: 0 0 0 7px var(--accent-soft);
+      flex: 0 0 auto;
     }
 
     .motif {
       position: absolute;
-      top: 112px;
-      right: 70px;
+      top: 108px;
+      right: 74px;
       display: grid;
-      grid-template-columns: repeat(8, 28px);
-      grid-auto-rows: 28px;
-      gap: 13px;
+      grid-template-columns: repeat(8, 29px);
+      grid-auto-rows: 29px;
+      gap: 12px;
       opacity: .78;
     }
 
     .motif span {
-      border-radius: 8px;
-      border: 2px solid rgba(15, 118, 110, .22);
-      background: rgba(230, 241, 239, .56);
+      border-radius: 9px;
+      border: 2px solid rgba(15, 118, 110, .20);
+      background: rgba(230, 241, 239, .55);
     }
 
     .motif span:nth-child(n+4) {
-      background: rgba(15, 118, 110, .16);
-      border-color: rgba(15, 118, 110, .32);
+      background: rgba(15, 118, 110, .14);
+      border-color: rgba(15, 118, 110, .30);
     }
 
     .motif span:nth-child(n+7) {
-      background: var(--accent);
-      border-color: var(--accent);
-      opacity: .9;
+      background: rgba(15, 118, 110, .72);
+      border-color: rgba(15, 118, 110, .72);
     }
 
-    .main {
+    .hero {
       position: relative;
-      margin-top: 48px;
-      max-width: 980px;
+      display: grid;
+      grid-template-columns: minmax(0, 730px) 314px;
+      align-items: start;
+      gap: 54px;
+      padding-top: 50px;
       z-index: 1;
     }
 
     .headline {
       margin: 0;
-      max-width: 950px;
       font-family: var(--font-serif);
-      font-size: 60px;
+      font-size: 56px;
       font-weight: 600;
       line-height: 1.08;
       letter-spacing: 0;
-      text-wrap: balance;
     }
 
     .headline em {
@@ -166,197 +170,289 @@
     }
 
     .subline {
+      max-width: 690px;
       margin: 22px 0 0;
-      max-width: 830px;
       color: var(--text-muted);
-      font-size: 22px;
-      font-weight: 500;
+      font-size: 21px;
+      font-weight: 550;
       line-height: 1.42;
     }
 
-    .meta {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 28px;
-      font-size: 18px;
-      font-weight: 650;
-      color: var(--accent-ink);
+    .event-card {
+      margin-top: 48px;
+      padding: 24px 24px 22px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, .68);
+      box-shadow: 0 16px 38px rgba(28, 27, 26, .07);
     }
 
-    .chip {
+    .event-label {
+      color: var(--accent-strong);
+      font-size: 14px;
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .event-place {
+      margin-top: 13px;
+      color: var(--text);
+      font-family: var(--font-serif);
+      font-size: 30px;
+      font-weight: 650;
+      line-height: 1.04;
+    }
+
+    .event-date {
+      margin-top: 8px;
+      color: var(--text-muted);
+      font-size: 18px;
+      font-weight: 650;
+      line-height: 1.25;
+    }
+
+    .square-date {
+      display: none;
+    }
+
+    .deadline-pill {
       display: inline-flex;
       align-items: center;
-      min-height: 42px;
-      padding: 9px 16px;
+      justify-content: center;
+      min-height: 40px;
+      margin-top: 18px;
+      padding: 9px 14px;
+      border: 1px solid var(--danger-border);
       border-radius: 999px;
-      background: var(--accent-soft);
-      border: 1px solid #cfe4e0;
+      background: var(--danger-soft);
+      color: var(--danger);
+      font-size: 16px;
+      font-weight: 800;
       white-space: nowrap;
     }
 
-    .chip.deadline {
-      background: #fff7ed;
-      border-color: #fed7aa;
-      color: var(--danger);
-      font-weight: 800;
-    }
-
-    .divider {
-      height: 1px;
-      width: 100%;
-      margin: 20px 0 0;
-      background: var(--border);
-    }
-
-    .speaker-panel {
-      position: absolute;
-      left: 78px;
-      right: 78px;
-      bottom: 64px;
-      height: 148px;
-      margin: 0;
-      padding: 11px 24px 10px;
+    .speaker-section {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      align-items: center;
+      gap: 22px;
+      min-height: 194px;
+      margin-top: 8px;
+      padding: 18px 22px;
       border: 1px solid var(--border);
-      border-radius: 14px;
-      background: rgba(243, 240, 233, .72);
+      border-radius: 16px;
+      background: rgba(243, 240, 233, .82);
+    }
+
+    .speaker-kicker {
+      color: var(--accent-strong);
+      font-size: 15px;
+      font-weight: 800;
+      line-height: 1.18;
+      text-transform: uppercase;
+    }
+
+    .speaker-note {
+      margin-top: 10px;
+      color: var(--text-muted);
+      font-size: 15px;
+      font-weight: 650;
+      line-height: 1.25;
     }
 
     .speaker-row {
       display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 16px;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px 18px;
+      align-items: start;
     }
 
     .speaker {
       min-width: 0;
-      text-align: center;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-align: left;
     }
 
     .avatar {
-      width: 70px;
-      height: 70px;
-      margin: 0 auto 7px;
+      width: 50px;
+      height: 50px;
+      margin: 0;
       border-radius: 999px;
       object-fit: cover;
       border: 3px solid var(--bg);
-      box-shadow: 0 0 0 2px var(--accent), 0 8px 18px rgba(28, 27, 26, .11);
       background: var(--bg-subtle);
+      box-shadow: 0 0 0 2px var(--accent), 0 7px 15px rgba(28, 27, 26, .10);
+      flex: 0 0 auto;
+    }
+
+    .speaker-copy {
+      min-width: 0;
     }
 
     .speaker-name {
+      color: var(--text);
       font-family: var(--font-serif);
-      font-size: 17.5px;
+      font-size: 15.5px;
       font-weight: 650;
       line-height: 1.05;
-      color: var(--text);
-      white-space: nowrap;
     }
 
     .speaker-affiliation {
-      margin-top: 3px;
+      margin-top: 2px;
       color: var(--text-muted);
-      font-size: 12px;
-      font-weight: 600;
-      line-height: 1.12;
-      text-wrap: balance;
+      font-size: 11.5px;
+      font-weight: 650;
+      line-height: 1.15;
+    }
+
+    .speaker-role {
+      display: inline-flex;
+      align-items: center;
+      margin-top: 5px;
+      padding: 2px 6px;
+      border-radius: 999px;
+      background: rgba(230, 241, 239, .9);
+      color: var(--accent-ink);
+      font-size: 9px;
+      font-weight: 850;
+      line-height: 1.1;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .speaker-role.is-panel {
+      background: var(--danger-soft);
+      color: var(--danger);
+      border: 1px solid var(--danger-border);
+    }
+
+    .speaker-role.is-dual {
+      background: #f1f6f5;
+      color: var(--accent-ink);
+      border: 1px solid #cfe4e0;
     }
 
     .footer {
-      position: absolute;
-      left: 78px;
-      right: 78px;
-      bottom: 24px;
-      display: flex;
+      display: none;
       align-items: center;
-      justify-content: space-between;
+      justify-content: flex-start;
+      gap: 28px;
+      min-height: 28px;
+      padding-top: 18px;
       color: var(--accent-ink);
-      font-size: 18px;
-      font-weight: 700;
+      font-size: 17px;
+      font-weight: 750;
     }
 
-    .footer .topics {
-      color: var(--text-muted);
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: .04em;
-      text-transform: uppercase;
+    .footer-secondary {
+      display: none;
     }
 
-    body[data-content="deadline"] .main {
-      max-width: 800px;
+    .deadline-layout {
+      display: none;
+    }
+
+    body[data-content="deadline"] .lineup-layout {
+      display: none;
+    }
+
+    body[data-content="deadline"] .deadline-layout {
+      display: grid;
+    }
+
+    body[data-content="deadline"] .hero {
+      grid-template-columns: minmax(0, 560px) 420px;
+      gap: 70px;
+      padding-top: 56px;
     }
 
     body[data-content="deadline"] .headline {
-      max-width: 720px;
-      font-size: 56px;
+      font-size: 50px;
     }
 
-    .deadline-focus {
-      display: none;
+    body[data-content="deadline"] .subline {
+      max-width: 560px;
+      font-size: 20px;
     }
 
-    body[data-content="deadline"] .deadline-focus {
-      position: absolute;
-      top: 150px;
-      right: 78px;
-      display: flex;
-      flex-direction: column;
-      width: 330px;
-      min-height: 250px;
-      padding: 28px;
-      border: 1px solid #fed7aa;
-      border-radius: 14px;
-      background: #fff7ed;
-      box-shadow: 0 14px 34px rgba(180, 83, 9, .12);
-      z-index: 2;
+    .deadline-card {
+      margin-top: 4px;
+      padding: 32px 34px 30px;
+      border: 1px solid var(--danger-border);
+      border-radius: 18px;
+      background: linear-gradient(180deg, #fffaf3, var(--danger-soft));
+      box-shadow: 0 18px 42px rgba(180, 83, 9, .12);
     }
 
-    .deadline-focus .label {
+    .deadline-label {
       color: var(--danger);
-      font-size: 16px;
-      font-weight: 800;
-      letter-spacing: .08em;
+      font-size: 18px;
+      font-weight: 850;
+      line-height: 1;
+      letter-spacing: 0;
       text-transform: uppercase;
     }
 
-    .deadline-focus .date {
-      margin-top: 16px;
+    .deadline-date {
+      margin-top: 18px;
       color: var(--text);
       font-family: var(--font-serif);
-      font-size: 55px;
+      font-size: 66px;
       font-weight: 700;
-      line-height: .95;
+      line-height: .94;
     }
 
-    .deadline-focus .note {
-      margin-top: auto;
+    .deadline-meta {
+      margin-top: 24px;
       color: var(--text-muted);
-      font-size: 17px;
-      font-weight: 600;
+      font-size: 20px;
+      font-weight: 650;
       line-height: 1.35;
     }
 
-    body[data-content="deadline"] .meta .deadline {
-      display: none;
+    .deadline-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 28px;
     }
 
-    body[data-content="deadline"] .speaker-panel {
-      right: auto;
-      width: 720px;
+    .deadline-stat {
+      min-height: 78px;
+      padding: 14px;
+      border: 1px solid #eadfce;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, .66);
     }
 
-    body[data-content="deadline"] .speaker-row {
-      grid-template-columns: repeat(4, 1fr);
+    .deadline-stat b {
+      display: block;
+      color: var(--accent-ink);
+      font-size: 18px;
+      line-height: 1.1;
     }
 
-    body[data-content="deadline"] .speaker:nth-child(n+5) {
+    .deadline-stat span {
+      display: block;
+      margin-top: 5px;
+      color: var(--text-muted);
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.15;
+      text-transform: uppercase;
+    }
+
+    body[data-content="deadline"] .speaker-section {
       display: none;
     }
 
     body[data-size="square"] .content {
-      padding: 62px 74px 56px;
+      grid-template-rows: auto auto 1fr auto;
+      padding: 62px 72px 34px;
     }
 
     body[data-size="square"] .topbar {
@@ -371,83 +467,149 @@
       top: 132px;
       right: 74px;
       grid-template-columns: repeat(4, 30px);
-      opacity: .7;
+      grid-auto-rows: 30px;
+      opacity: .68;
     }
 
-    body[data-size="square"] .main {
-      margin-top: 68px;
-      max-width: 890px;
+    body[data-size="square"] .hero {
+      display: block;
+      padding-top: 70px;
     }
 
     body[data-size="square"] .headline {
-      max-width: 890px;
-      font-size: 64px;
+      max-width: 855px;
+      font-size: 58px;
       line-height: 1.08;
     }
 
     body[data-size="square"] .subline {
-      max-width: 760px;
-      margin-top: 25px;
+      max-width: 790px;
+      margin-top: 24px;
       font-size: 25px;
+      line-height: 1.38;
     }
 
-    body[data-size="square"] .meta {
-      margin-top: 34px;
-      font-size: 22px;
+    body[data-size="square"] .event-card {
+      display: flex;
+      align-items: center;
       gap: 18px;
+      width: max-content;
+      max-width: 100%;
+      margin-top: 32px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      box-shadow: none;
     }
 
-    body[data-size="square"] .chip {
+    body[data-size="square"] .event-label,
+    body[data-size="square"] .event-place,
+    body[data-size="square"] .event-date {
+      display: none;
+    }
+
+    body[data-size="square"] .deadline-pill {
       min-height: 52px;
-      padding: 12px 19px;
+      margin: 0;
+      padding: 12px 20px;
+      font-size: 22px;
     }
 
-    body[data-size="square"] .divider {
-      margin-top: 52px;
+    body[data-size="square"] .event-card .square-date {
+      display: inline-flex;
+      align-items: center;
+      min-height: 52px;
+      padding: 12px 20px;
+      border: 1px solid #cfe4e0;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent-ink);
+      font-size: 22px;
+      font-weight: 800;
+      white-space: nowrap;
     }
 
-    body[data-size="square"] .speaker-panel {
-      position: relative;
-      left: auto;
-      right: auto;
-      bottom: auto;
-      height: auto;
-      margin-top: 28px;
-      padding: 34px 38px 31px;
+    body[data-size="square"] .speaker-section {
+      display: block;
+      min-height: 0;
+      margin-top: 42px;
+      padding: 24px 28px 24px;
+    }
+
+    body[data-size="square"] .speaker-heading {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    body[data-size="square"] .speaker-note {
+      margin-top: 0;
+      font-size: 17px;
     }
 
     body[data-size="square"] .speaker-row {
-      grid-template-columns: repeat(3, 1fr);
-      gap: 34px 28px;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px 16px;
+    }
+
+    body[data-size="square"] .speaker {
+      display: block;
+      text-align: center;
     }
 
     body[data-size="square"] .avatar {
-      width: 116px;
-      height: 116px;
-      margin-bottom: 13px;
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 9px;
       border-width: 4px;
       box-shadow: 0 0 0 3px var(--accent), 0 10px 22px rgba(28, 27, 26, .13);
     }
 
     body[data-size="square"] .speaker-name {
-      font-size: 24px;
+      font-size: 17px;
+      line-height: 1.05;
     }
 
     body[data-size="square"] .speaker-affiliation {
+      min-height: 2.35em;
+      margin-top: 4px;
+      font-size: 12px;
+      line-height: 1.18;
+    }
+
+    body[data-size="square"] .speaker-role {
       margin-top: 6px;
-      font-size: 16px;
-      line-height: 1.25;
+      font-size: 9px;
+      padding: 3px 7px;
     }
 
     body[data-size="square"] .footer {
-      left: 74px;
-      right: 74px;
-      bottom: 34px;
-      font-size: 22px;
+      min-height: 30px;
+      padding-top: 16px;
+      font-size: 20px;
     }
 
-    body[data-size="square"] .footer .topics {
+    body[data-size="square"] .footer-secondary {
       display: none;
+    }
+
+    body[data-content="lineup"] .deadline-layout {
+      display: none !important;
+    }
+
+    body[data-content="deadline"] .lineup-layout {
+      display: none !important;
+    }
+
+    body[data-size="square"][data-content="lineup"] .hero.lineup-layout {
+      display: block;
+    }
+
+    body[data-size="wide"][data-content="lineup"] .hero.lineup-layout,
+    body[data-size="wide"][data-content="deadline"] .hero.deadline-layout {
+      display: grid;
     }
   </style>
 </head>
@@ -464,61 +626,188 @@
         <span></span><span></span><span></span><span></span>
       </div>
 
-      <section class="main">
-        <h1 class="headline">Non-Autoregressive Language Models for <em>Fast &amp; Flexible</em> Text Generation</h1>
-        <p class="subline">Language generation beyond next-token prediction: diffusion, flow matching, and any-order autoregression.</p>
-        <div class="meta">
-          <div class="chip">San Francisco · Oct 9, 2026</div>
-          <div class="chip deadline">Papers due June 23</div>
+      <section class="hero lineup-layout">
+        <div>
+          <h1 class="headline">Non-Autoregressive Language Models for <em>Fast &amp; Flexible</em> Text Generation</h1>
+          <p class="subline">Language generation beyond next-token prediction: diffusion, flow matching, and any-order autoregression.</p>
         </div>
+        <aside class="event-card" aria-label="Event details">
+          <div class="event-label">Workshop day</div>
+          <div class="event-place">San Francisco</div>
+          <div class="event-date">October 9, 2026</div>
+          <div class="deadline-pill">Papers due June 30</div>
+          <div class="square-date">San Francisco &middot; Oct 9, 2026</div>
+        </aside>
       </section>
 
-      <aside class="deadline-focus" aria-label="Submission deadline">
-        <div class="label">Papers due</div>
-        <div class="date">June 23</div>
-        <div class="note">Non-archival workshop submissions via OpenReview.</div>
-      </aside>
+      <section class="hero deadline-layout">
+        <div>
+          <h1 class="headline">Non-Autoregressive Language Models for <em>Fast &amp; Flexible</em> Text Generation</h1>
+          <p class="subline">A COLM 2026 workshop on diffusion, flow matching, and any-order language generation.</p>
+        </div>
+        <aside class="deadline-card" aria-label="Submission deadline">
+          <div class="deadline-label">Papers due</div>
+          <div class="deadline-date">June 30</div>
+          <p class="deadline-meta">Non-archival workshop submissions via OpenReview.</p>
+          <div class="deadline-strip">
+            <div class="deadline-stat"><b>Oct 9</b><span>Workshop</span></div>
+            <div class="deadline-stat"><b>COLM</b><span>2026</span></div>
+            <div class="deadline-stat"><b>SF</b><span>California</span></div>
+          </div>
+        </aside>
+      </section>
 
-      <div class="divider"></div>
-
-      <section class="speaker-panel" aria-label="Invited speakers">
+      <section class="speaker-section lineup-layout" aria-label="Speakers and panelists">
+        <div class="speaker-heading">
+          <div>
+            <div class="speaker-kicker">Speakers &amp; panel</div>
+            <div class="speaker-note">Confirmed lineup</div>
+          </div>
+        </div>
         <div class="speaker-row">
           <article class="speaker">
             <img class="avatar" src="../img/people/stefano-ermon.jpg" alt="">
-            <div class="speaker-name">Stefano Ermon</div>
-            <div class="speaker-affiliation">Stanford</div>
+            <div class="speaker-copy">
+              <div class="speaker-name">Stefano Ermon</div>
+              <div class="speaker-affiliation">Associate Professor, Stanford</div>
+              <div class="speaker-role">Invited speaker</div>
+            </div>
           </article>
           <article class="speaker">
             <img class="avatar" src="../img/people/shansan-gong.jpg" alt="">
-            <div class="speaker-name">Shansan Gong</div>
-            <div class="speaker-affiliation">University of Hong Kong</div>
+            <div class="speaker-copy">
+              <div class="speaker-name">Shansan Gong</div>
+              <div class="speaker-affiliation">Ph.D. Candidate, HKU</div>
+              <div class="speaker-role">Invited speaker</div>
+            </div>
           </article>
           <article class="speaker">
             <img class="avatar" src="../img/people/aditya-grover.jpg" alt="">
-            <div class="speaker-name">Aditya Grover</div>
-            <div class="speaker-affiliation">UCLA</div>
+            <div class="speaker-copy">
+              <div class="speaker-name">Aditya Grover</div>
+              <div class="speaker-affiliation">Assistant Professor, UCLA</div>
+              <div class="speaker-role is-dual">Speaker / panelist</div>
+            </div>
           </article>
           <article class="speaker">
             <img class="avatar" src="../img/people/jiaxin-shi.jpg" alt="">
-            <div class="speaker-name">Jiaxin Shi</div>
-            <div class="speaker-affiliation">Meta SuperIntelligence Labs</div>
+            <div class="speaker-copy">
+              <div class="speaker-name">Jiaxin Shi</div>
+              <div class="speaker-affiliation">Research Scientist, Meta</div>
+              <div class="speaker-role">Invited speaker</div>
+            </div>
           </article>
           <article class="speaker">
             <img class="avatar" src="../img/people/arash-vahdat.jpg" alt="">
-            <div class="speaker-name">Arash Vahdat</div>
-            <div class="speaker-affiliation">NVIDIA Research</div>
+            <div class="speaker-copy">
+              <div class="speaker-name">Arash Vahdat</div>
+              <div class="speaker-affiliation">Research Director, NVIDIA</div>
+              <div class="speaker-role">Invited speaker</div>
+            </div>
           </article>
           <article class="speaker">
             <img class="avatar" src="../img/people/mengdi-wang.jpg" alt="">
-            <div class="speaker-name">Mengdi Wang</div>
-            <div class="speaker-affiliation">Princeton University</div>
+            <div class="speaker-copy">
+              <div class="speaker-name">Mengdi Wang</div>
+              <div class="speaker-affiliation">Professor, Princeton</div>
+              <div class="speaker-role">Invited speaker</div>
+            </div>
+          </article>
+          <article class="speaker">
+            <img class="avatar" src="../img/people/subham-sahoo.jpg" alt="">
+            <div class="speaker-copy">
+              <div class="speaker-name">Subham Sekhar Sahoo</div>
+              <div class="speaker-affiliation">LLM Lead, MBZUAI &ndash; IFM</div>
+              <div class="speaker-role is-panel">Panelist</div>
+            </div>
+          </article>
+          <article class="speaker">
+            <img class="avatar" src="../img/people/aaron-lou.jpg" alt="">
+            <div class="speaker-copy">
+              <div class="speaker-name">Aaron Lou</div>
+              <div class="speaker-affiliation">Lead, Strategic Explorations, OpenAI</div>
+              <div class="speaker-role is-panel">Panelist</div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="speaker-section deadline-layout" aria-label="Speakers and panelists">
+        <div class="speaker-heading">
+          <div class="speaker-kicker">Speakers &amp; panel</div>
+          <div class="speaker-note">Plus contributed spotlights and posters</div>
+        </div>
+        <div class="speaker-row">
+          <article class="speaker">
+            <img class="avatar" src="../img/people/stefano-ermon.jpg" alt="">
+            <div class="speaker-copy">
+              <div class="speaker-name">Stefano Ermon</div>
+              <div class="speaker-affiliation">Associate Professor, Stanford</div>
+              <div class="speaker-role">Invited speaker</div>
+            </div>
+          </article>
+          <article class="speaker">
+            <img class="avatar" src="../img/people/shansan-gong.jpg" alt="">
+            <div class="speaker-copy">
+              <div class="speaker-name">Shansan Gong</div>
+              <div class="speaker-affiliation">Ph.D. Candidate, HKU</div>
+              <div class="speaker-role">Invited speaker</div>
+            </div>
+          </article>
+          <article class="speaker">
+            <img class="avatar" src="../img/people/aditya-grover.jpg" alt="">
+            <div class="speaker-copy">
+              <div class="speaker-name">Aditya Grover</div>
+              <div class="speaker-affiliation">Assistant Professor, UCLA</div>
+              <div class="speaker-role is-dual">Speaker / panelist</div>
+            </div>
+          </article>
+          <article class="speaker">
+            <img class="avatar" src="../img/people/jiaxin-shi.jpg" alt="">
+            <div class="speaker-copy">
+              <div class="speaker-name">Jiaxin Shi</div>
+              <div class="speaker-affiliation">Research Scientist, Meta</div>
+              <div class="speaker-role">Invited speaker</div>
+            </div>
+          </article>
+          <article class="speaker">
+            <img class="avatar" src="../img/people/arash-vahdat.jpg" alt="">
+            <div class="speaker-copy">
+              <div class="speaker-name">Arash Vahdat</div>
+              <div class="speaker-affiliation">Research Director, NVIDIA</div>
+              <div class="speaker-role">Invited speaker</div>
+            </div>
+          </article>
+          <article class="speaker">
+            <img class="avatar" src="../img/people/mengdi-wang.jpg" alt="">
+            <div class="speaker-copy">
+              <div class="speaker-name">Mengdi Wang</div>
+              <div class="speaker-affiliation">Professor, Princeton</div>
+              <div class="speaker-role">Invited speaker</div>
+            </div>
+          </article>
+          <article class="speaker">
+            <img class="avatar" src="../img/people/subham-sahoo.jpg" alt="">
+            <div class="speaker-copy">
+              <div class="speaker-name">Subham Sekhar Sahoo</div>
+              <div class="speaker-affiliation">LLM Lead, MBZUAI &ndash; IFM</div>
+              <div class="speaker-role is-panel">Panelist</div>
+            </div>
+          </article>
+          <article class="speaker">
+            <img class="avatar" src="../img/people/aaron-lou.jpg" alt="">
+            <div class="speaker-copy">
+              <div class="speaker-name">Aaron Lou</div>
+              <div class="speaker-affiliation">Lead, Strategic Explorations, OpenAI</div>
+              <div class="speaker-role is-panel">Panelist</div>
+            </div>
           </article>
         </div>
       </section>
 
       <footer class="footer">
         <div>pengzhangzhi.github.io/NonAR-LM</div>
-        <div class="topics">Diffusion · Flow Matching · Any-Order Generation</div>
+        <div class="footer-secondary">Diffusion &middot; Flow Matching &middot; Any-Order Generation</div>
       </footer>
     </div>
   </main>
